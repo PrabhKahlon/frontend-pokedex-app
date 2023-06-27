@@ -1,24 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-white dark:bg-slate-900 p-4 w-screen h-screen">
+      <h1 className="dark:text-white text-center text-6xl">Pokédex</h1>
+      <img src="/images/pokeball.svg" alt="Pokeball"></img>
     </div>
   );
 }
