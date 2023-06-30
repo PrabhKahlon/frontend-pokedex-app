@@ -29,7 +29,7 @@ export default function PokemonTypeBadge({type}: PokemonTypeBadgeProps) {
     let typeColour = pokemonTypeColours[type];
 
     return (
-        <div className={`text-white ${typeColour} rounded-full px-4 py-2 first-letter:uppercase mx-1`}>
+        <div className={`text-white ${typeColour} text-center w-[90px] h-10 rounded-full px-4 py-2 first-letter:uppercase mx-1`}>
             {type}
         </div>
     )
