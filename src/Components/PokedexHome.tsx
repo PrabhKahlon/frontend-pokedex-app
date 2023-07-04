@@ -5,7 +5,7 @@ import PokemonCard from "./PokemonCard"
 export default function PokedexHome() {
 
     const { data, isLoading } = useFetchList(32)
-    console.log(data)
+    //console.log(data)
 
     function HomeLoading() {
         return(

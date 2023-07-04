@@ -3,7 +3,7 @@ import React from "react"
 export default function PokemonLoading() {
     return (
         <div className="flex flex-col">
-            <div className="mt-3 mx-2 flex flex-col items-center border rounded-lg border-gray-400 max-w-screen-xl">
+            <div className="mt-3 mx-2 flex flex-col items-center border rounded-lg border-gray-400 max-w-screen-md lg:max-w-sm lg:h-full">
                 <div className="animate-pulse flex flex-row items-center flex-wrap mt-4 p-2">
                     <h1 className="text-5xl first-letter:uppercase font-bold">Pokemon</h1>
                     <h2 className="text-3xl mt-3 ml-2">#0</h2>
