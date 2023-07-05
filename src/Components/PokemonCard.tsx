@@ -55,7 +55,7 @@ export default function PokemonCard({ name, url }: Pokemon) {
     }
 
     return (
-        <div className={`transition-all duration-1000 mx-4 w-full bg-no-repeat bg-right flex align-middle justify-center items-center h-40 ${bgColour} my-4 rounded-xl max-w-md ` + (isLoading ? "animate-pulse" : "")} onClick={isLoading ? () => {} : handleClick}>
+        <div className={`transition-all duration-1000 md:mx-4 w-full bg-no-repeat bg-right flex align-middle justify-center items-center h-40 ${bgColour} my-4 rounded-xl max-w-md ` + (isLoading ? "animate-pulse" : "")} onClick={isLoading ? () => {} : handleClick}>
             {isLoading ? <CardLoading /> :
                 <>
                     <div className="flex flex-col w-32">

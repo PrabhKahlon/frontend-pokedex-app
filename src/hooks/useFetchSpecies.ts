@@ -12,7 +12,7 @@ export const useFetchSpecies = (pokemon: string | number) => {
     return useQuery({
         queryKey: ['species: ', pokemon],
         queryFn: async () => {
-            await simulateDelay(2000)
+            await simulateDelay(5000)
             const { data } = await axios.get(FETCH_URL + pokemon)
             return data as any
         }

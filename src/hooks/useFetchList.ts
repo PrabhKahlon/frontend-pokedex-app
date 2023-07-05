@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query"
+import { useInfiniteQuery } from "@tanstack/react-query"
 import axios from "axios"
 
-const FETCH_URL = "https://pokeapi.co/api/v2/pokemon?limit="
+const FETCH_URL = "https://pokeapi.co/api/v2/pokemon?offset="
 
 type Pokemon = {
     name: string,
@@ -20,13 +20,15 @@ function simulateDelay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+async function getPokemonList(nextPageUrl: string) {
+    const { data } = await axios.get(nextPageUrl)
+    return data as PokemonList
+}
+
 export const useFetchList = (numberPokemon: number) => {
-    return useQuery({
-        queryKey: ['pokemonList:'],
-        queryFn: async () => {
-            //await simulateDelay(2000)
-            const { data } = await axios.get(FETCH_URL + numberPokemon)
-            return data as PokemonList
+    return useInfiniteQuery(['pokemonList'], ({ pageParam = FETCH_URL + "0&limit=" + numberPokemon}) => getPokemonList(pageParam), { 
+        getNextPageParam: (lastPage) => {
+            return lastPage.next
         }
     })
 }

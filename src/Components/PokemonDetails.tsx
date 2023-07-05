@@ -6,6 +6,7 @@ import PokemonLoading from "./PokemonLoading";
 import { useParams } from "react-router-dom";
 import { useFetchSpecies } from "../hooks/useFetchSpecies";
 import axios from "axios";
+import PokemonCard from "./PokemonCard";
 
 export default function PokemonDetails() {
     const [evolutionChain, setEvolutionChain] = useState([] as any);
@@ -35,10 +36,10 @@ export default function PokemonDetails() {
         setEvolutionChain(evolutionChain);
     }
 
-    function PokemonCard() {
+    function DetailsCard() {
         return (
-            <div className="flex flex-row flex-wrap">
-                <div className="flex flex-col max-w-screen-lg lg:max-w-sm w-full">
+            <div className="flex flex-1 flex-row flex-wrap lg:px-32 justify-center">
+                <div className="flex flex-col max-w-screen-lg lg:max-w-md w-full justify-center">
                     <div className="mt-3 mx-2 flex flex-col items-center border rounded-lg border-gray-400">
                         <div className="flex flex-row items-center flex-wrap mt-4 p-2">
                             <h1 className="text-5xl first-letter:uppercase font-bold">{pokemonData.data?.name}</h1>
@@ -55,7 +56,7 @@ export default function PokemonDetails() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-1 flex-col items-start lg:items-start px-8 py-4 lg:px-4">
+                <div className="flex flex-1 flex-col items-start justify-center px-4 py-4 lg:pl-4 lg:pr-2">
                     <h1 className="text-3xl mb-4">Description</h1>
                     <p className="text-lg">{pokemonDetails.data?.flavor_text_entries[0].flavor_text}</p>
                     <h1 className="text-3xl my-4">Ability</h1>
@@ -67,8 +68,9 @@ export default function PokemonDetails() {
                     <h1 className="text-3xl my-4">Egg Groups</h1>
                     {pokemonDetails.data?.egg_groups.map((element: any, index: any) => { return (<p key={index} className="text-lg first-letter:uppercase">{element.name}</p>) })}
                     <h1 className="text-3xl my-4">Evolution</h1>
-                    {evolutionChain.map((element: any, index: any) => { return (<p key={index} className="text-lg first-letter:uppercase">{element}</p>) })}
-
+                    <div className="flex flex-row flex-wrap lg:w-full">
+                        {evolutionChain.map((element: any, index: any) => { return (<PokemonCard key={index} name={element} url=""></PokemonCard>) })}
+                    </div>
                 </div>
             </div>
         )
@@ -76,7 +78,7 @@ export default function PokemonDetails() {
 
     return (
         <>
-            {pokemonData.isLoading ? <PokemonLoading /> : <PokemonCard />}
+            {pokemonData.isLoading ? <PokemonLoading /> : <DetailsCard />}
         </>
     )
 }

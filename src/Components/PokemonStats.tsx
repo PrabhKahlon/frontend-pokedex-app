@@ -22,7 +22,7 @@ export default function PokemonStats({ name, base_stat }: PokemonStatsProps) {
                 if (count === value) clearInterval(interval);
             }, duration / value);
             return () => clearInterval(interval);
-        });
+        }, []);
         return <>{count}</>;
     }
 
@@ -35,7 +35,7 @@ export default function PokemonStats({ name, base_stat }: PokemonStatsProps) {
                 if (width === value) clearInterval(interval);
             }, duration / value);
             return () => clearInterval(interval);
-        });
+        }, []);
         return <div className={`rounded-full h-3 bg-black dark:bg-white transition-width duration-500`} style={{ width: `${width}%` }}></div>;
     }
 
