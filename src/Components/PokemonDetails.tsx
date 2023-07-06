@@ -6,7 +6,7 @@ import PokemonLoading from "./PokemonLoading";
 import { useParams } from "react-router-dom";
 import { useFetchSpecies } from "../hooks/useFetchSpecies";
 import axios from "axios";
-import PokemonCard from "./PokemonCard";
+import { PokemonCard } from "./PokemonCard";
 
 export default function PokemonDetails() {
     const [evolutionChain, setEvolutionChain] = useState([] as any);
