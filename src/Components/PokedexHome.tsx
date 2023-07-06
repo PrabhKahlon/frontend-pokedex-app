@@ -3,18 +3,6 @@ import React, { useRef, useEffect } from "react"
 import { useFetchList } from "../hooks/useFetchList"
 import { PokemonCard } from "./PokemonCard"
 
-type Pokemon = {
-    name: string,
-    url: string
-}
-
-type PokemonList = {
-    count: number
-    next: string,
-    previous: string,
-    results: Pokemon[]
-}
-
 export default function PokedexHome() {
     const { data, isLoading, fetchNextPage } = useFetchList(32)
 
