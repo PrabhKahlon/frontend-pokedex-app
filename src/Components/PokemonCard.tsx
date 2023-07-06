@@ -1,4 +1,4 @@
-import { forwardRef } from "react"
+import { forwardRef, useEffect } from "react"
 import { useFetchPokemon } from "../hooks/useFetchPokemon"
 import { useNavigate } from "react-router-dom";
 
@@ -40,6 +40,7 @@ export const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(({ name,
 
   const handleClick = () => {
     navigate("/pokemon/" + data?.name);
+    window.scrollTo(0, 0)
   }
 
   function CardLoading() {

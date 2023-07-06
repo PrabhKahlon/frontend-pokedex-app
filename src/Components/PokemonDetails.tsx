@@ -15,7 +15,6 @@ export default function PokemonDetails() {
     const pokemonData = useFetchPokemon(pokemonName!);
     const pokemonDetails = useFetchSpecies(pokemonName!);
 
-
     useEffect(() => {
         getEvolutionChain()
     }, [pokemonDetails.data])
