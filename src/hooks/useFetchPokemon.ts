@@ -12,7 +12,6 @@ export const useFetchPokemon = (pokemon: string | number) => {
     return useQuery({
         queryKey: ['pokemon: ', pokemon],
         queryFn: async () => {
-            await simulateDelay(3000)
             const { data } = await axios.get(FETCH_URL + pokemon)
             return data as PokemonData
         }

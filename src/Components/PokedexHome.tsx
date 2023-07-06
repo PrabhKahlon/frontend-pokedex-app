@@ -1,12 +1,11 @@
 import { useIntersection } from "@mantine/hooks"
-import React, { useRef, useEffect } from "react"
+import { useEffect } from "react"
 import { useFetchList } from "../hooks/useFetchList"
 import { PokemonCard } from "./PokemonCard"
 
 export default function PokedexHome() {
     const { data, isLoading, fetchNextPage } = useFetchList(32)
 
-    const lastCardRef = useRef<HTMLDivElement>(null)
     const { ref: intersectionRef, entry } = useIntersection<HTMLDivElement>({
         root: null,
         rootMargin: "0px",
@@ -32,9 +31,10 @@ export default function PokedexHome() {
     return (
         <>
             {isLoading ? <HomeLoading /> :
-                <><div className="w-full text-center">
-                    <h1 className="text-5xl m-6">All Pokemon</h1>
-                </div>
+                <div className="w-full text-center">
+                    <div className="w-full text-center">
+                        <h1 className="text-5xl m-6">All Pokemon</h1>
+                    </div>
                     <div className="flex flex-row flex-wrap justify-center px-4">
                         {cards?.map((card, index) => {
                             if (index === cards.length - 4) {
@@ -56,8 +56,8 @@ export default function PokedexHome() {
                                 );
                             }
                         })}
-                        <div />
-                    </div></>
+                    </div>
+                </div>
             }
         </>
     )
