@@ -41,12 +41,12 @@ export default function Navbar() {
           </div>
           <div className="flex flex-row text-right mr-4">
             <AiOutlineSearch className="block sm:hidden w-8 h-8 dark:fill-white-800" onClick={() => showSearch()}></AiOutlineSearch>
-            <label className="relative block">
+            <label className="relative hidden sm:block">
               <span className="sr-only">Search</span>
-              <span className="absolute inset-y-0 left-0 flex items-center pl-2 z-10">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-6 z-10">
                 <AiOutlineSearch className="hidden sm:block w-6 h-6 md:w-8 md:h-8 fill-slate-800"></AiOutlineSearch>
               </span>
-              <input className="hidden sm:block h-10 md:h-12 placeholder:italic dark:text-slate-800 placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-12 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1" placeholder="Search for a Pokemon" type="text" name="search" />
+              {isLoading ? <></> : <SearchBox padding={12} searchList={pokemonList?.results!} />}
             </label>
             {/* 
           <input placeholder="Search for a Pokémon"></input> */}
