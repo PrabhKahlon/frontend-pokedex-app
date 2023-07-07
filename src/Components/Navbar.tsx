@@ -39,7 +39,7 @@ export default function Navbar() {
             <img className="w-10 h-10 md:w-14 md:h-14 mt-1" src="/images/pokeball.svg" alt="Pokeball" ></img>
             {location?.pathname === "/" && <h1 className="dark:text-white text-2xl ml-2">Pokédex</h1>}
           </div>
-          <div className="flex flex-row text-right mr-4">
+          <div className="flex flex-row text-right">
             <AiOutlineSearch className="block sm:hidden w-8 h-8 dark:fill-white-800" onClick={() => showSearch()}></AiOutlineSearch>
             <label className="relative hidden sm:block">
               <span className="sr-only">Search</span>

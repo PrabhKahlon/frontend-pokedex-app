@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-      <div className="flex flex-col bg-white dark:bg-slate-800 w-screen h-full min-h-screen dark:text-white">
+      <div className="flex flex-col bg-white dark:bg-slate-800 w-full h-full min-h-screen dark:text-white">
         <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<PokedexHome />}></Route>
