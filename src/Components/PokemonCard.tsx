@@ -60,7 +60,7 @@ export const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(({ name,
   }
 
   return (
-    <div ref={ref} className={`transition-all duration-1000 md:mx-4 w-full bg-no-repeat bg-right flex align-middle justify-center items-center h-40 ${bgColour} my-4 rounded-xl max-w-md ` + (isLoading ? "animate-pulse" : "")} onClick={isLoading ? () => { } : handleClick}>
+    <div ref={ref} className={`transition-all duration-1000 cursor-pointer hover:scale-105 md:mx-4 w-full bg-no-repeat bg-right flex align-middle justify-center items-center h-40 ${bgColour} my-4 rounded-xl max-w-md ` + (isLoading ? "animate-pulse" : "")} onClick={isLoading ? () => { } : handleClick}>
       {isLoading ? <CardLoading /> :
         <>
           <div className="flex flex-col w-32">

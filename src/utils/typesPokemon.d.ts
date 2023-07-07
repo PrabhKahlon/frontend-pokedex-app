@@ -40,3 +40,10 @@ type PokemonData = {
     types: [PokemonType],
     weight: number
 }
+
+type PokemonList = {
+    count: number
+    next: string,
+    previous: string,
+    results: [Pokemon]
+}

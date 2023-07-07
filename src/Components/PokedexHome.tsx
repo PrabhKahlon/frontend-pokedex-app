@@ -33,11 +33,11 @@ export default function PokedexHome() {
             {isLoading ? <HomeLoading /> :
                 <div className="w-full text-center">
                     <div className="w-full text-center">
-                        <h1 className="text-5xl m-6">All Pokemon</h1>
+                        <h1 className="text-5xl m-6">All Pokémon</h1>
                     </div>
                     <div className="flex flex-row flex-wrap justify-center px-4">
                         {cards?.map((card, index) => {
-                            if (index === cards.length - 4) {
+                            if (index === cards.length - 1) {
                                 return (
                                     <PokemonCard
                                         key={index}

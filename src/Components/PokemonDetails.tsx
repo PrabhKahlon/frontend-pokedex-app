@@ -37,9 +37,9 @@ export default function PokemonDetails() {
 
     function DetailsCard() {
         return (
-            <div className="flex flex-1 flex-row flex-wrap lg:px-32 justify-center">
-                <div className="flex flex-col max-w-screen-lg lg:max-w-md w-full justify-center">
-                    <div className="mt-3 mx-2 flex flex-col items-center border rounded-lg border-gray-400">
+            <div className="flex flex-1 flex-row flex-wrap lg:px-32 justify-start">
+                <div className="flex flex-col max-w-screen-lg lg:max-w-md w-full justify-start lg:mt-10">
+                    <div className="mt-3 mx-2 flex flex-col items-center border rounded-lg border-gray-400 lg:pb-3">
                         <div className="flex flex-row items-center flex-wrap mt-4 p-2">
                             <h1 className="text-5xl first-letter:uppercase font-bold">{pokemonData.data?.name}</h1>
                             <h2 className="text-3xl mt-3 ml-2">{`#${pokemonData.data?.id}`}</h2>
@@ -55,7 +55,7 @@ export default function PokemonDetails() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-1 flex-col items-start justify-center px-4 py-4 lg:pl-4 lg:pr-2">
+                <div className="flex flex-1 flex-col items-start justify-center px-4 py-4 lg:pl-4 lg:pr-2 lg:mt-10">
                     <h1 className="text-3xl mb-4">Description</h1>
                     <p className="text-lg">{pokemonDetails.data?.flavor_text_entries[0].flavor_text}</p>
                     <h1 className="text-3xl my-4">Ability</h1>
