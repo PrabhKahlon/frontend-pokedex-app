@@ -22,11 +22,11 @@ The Pokedex application was developed by me. It is a personal project for learni
 
 ## Getting Started
 
-The application is hosted live here: 
+The application is hosted live here: https://main--teal-pithivier-748a09.netlify.app/ 
 
 Alternatively, to run the Pokédex application locally, follow these steps:
 
-1. Clone the repository: `git clone <repository-url>`
+1. Clone the repository: `git clone https://github.com/PrabhKahlon/frontend-pokedex-app.git`
 2. Navigate to the project directory: `cd pokedex`
 3. Install the dependencies: `npm install`
 4. Start the development server: `npm start`
