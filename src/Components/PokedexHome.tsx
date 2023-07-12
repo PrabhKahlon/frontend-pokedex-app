@@ -32,8 +32,9 @@ export default function PokedexHome() {
         <>
             {isLoading ? <HomeLoading /> :
                 <div className="w-full text-center">
-                    <div className="w-full text-center">
-                        <h1 className="text-5xl m-6">All Pokémon</h1>
+                    <div className="flex justify-center">
+                        {/* <h1 className="text-5xl m-6">All Pokémon</h1> */}
+                        <img className="w-72 p-4" src="/images/pk-logo.png" alt="pokemon logo"></img>
                     </div>
                     <div className="flex flex-row flex-wrap justify-center px-4">
                         {cards?.map((card, index) => {
