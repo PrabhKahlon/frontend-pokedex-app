@@ -8,6 +8,7 @@ interface PokemonCardProps {
 }
 
 export const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(({ name, url }, ref) => {
+  // Map of Pokemon types to their corresponding background colors
   const pokemonTypeColours: { [key: string]: string } = {
     normal: "bg-[#a8a878]",
     fighting: "bg-[#c03028]",
@@ -29,8 +30,10 @@ export const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(({ name,
     fairy: "bg-[#ee99ac]",
   }
 
+  // Fetch details of the given Pokemon
   const { data, isLoading } = useFetchPokemon(name);
 
+  // Set the background color based on the Pokemon's first type
   let bgColour = "bg-gray-400";
   if (data?.types[0]?.type?.name) {
     bgColour = pokemonTypeColours[data.types[0].type.name]
@@ -38,11 +41,13 @@ export const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(({ name,
 
   const navigate = useNavigate();
 
+  // Navigate to the selected Pokemon's details page
   const handleClick = () => {
     navigate("/pokemon/" + data?.name);
     window.scrollTo(0, 0)
   }
 
+  // Placeholder card while the Pokemon details are loading
   function CardLoading() {
     return (
       <>
@@ -59,6 +64,9 @@ export const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(({ name,
     );
   }
 
+  // Render the PokemonCard component
+  // The card includes the Pokemon's name, ID, and image
+  // The card's background color changes based on the Pokemon's first type
   return (
     <div ref={ref} className={`transition-all duration-1000 cursor-pointer hover:scale-105 md:mx-4 w-full bg-no-repeat bg-right flex align-middle justify-center items-center h-40 ${bgColour} my-4 rounded-xl max-w-md ` + (isLoading ? "animate-pulse" : "")} onClick={isLoading ? () => { } : handleClick}>
       {isLoading ? <CardLoading /> :

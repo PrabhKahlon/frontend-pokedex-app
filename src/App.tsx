@@ -6,13 +6,15 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-      <div className="flex flex-col bg-white dark:bg-slate-800 w-full h-full min-h-screen dark:text-white">
-        <Navbar></Navbar>
-        <Routes>
-          <Route path="/" element={<PokedexHome />}></Route>
-          <Route path="/pokemon/:id" element={<PokemonDetails />}></Route>
-        </Routes>
-      </div>
+    // Define the main layout of the app
+    <div className="flex flex-col bg-white dark:bg-slate-800 w-full h-full min-h-screen dark:text-white">
+      <Navbar></Navbar>
+      <Routes>
+        {/* Routes for the homepage and specific pokemon */}
+        <Route path="/" element={<PokedexHome />}></Route>
+        <Route path="/pokemon/:id" element={<PokemonDetails />}></Route>
+      </Routes>
+    </div>
   );
 }
 

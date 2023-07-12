@@ -9,17 +9,23 @@ import axios from "axios";
 import { PokemonCard } from "./PokemonCard";
 
 export default function PokemonDetails() {
+    // Local state to hold the evolution chain
     const [evolutionChain, setEvolutionChain] = useState([] as any);
+
+    // Get the Pokemon name from the URL parameters
     const params = useParams()
     const pokemonName = params.id
+
+    // Use custom hooks to fetch details of a specific Pokemon and its species
     const pokemonData = useFetchPokemon(pokemonName!);
     const pokemonDetails = useFetchSpecies(pokemonName!);
 
+    // When the species data is updated, fetch the evolution chain
     useEffect(() => {
         getEvolutionChain()
     }, [pokemonDetails.data])
 
-
+    // Fetch the evolution chain data and store it in local state
     async function getEvolutionChain() {
         if (pokemonDetails.isLoading) {
             return
@@ -34,8 +40,12 @@ export default function PokemonDetails() {
         }
         setEvolutionChain(evolutionChain);
     }
-
+    
+    // Function component to render the full details of the Pokemon
     function DetailsCard() {
+        // The card includes the Pokemon's image, types, stats, description,
+        // ability, gender ratio, catch rate, egg groups, and evolution chain.
+        // Each Pokemon in the evolution chain is rendered as a PokemonCard.
         return (
             <div className="flex flex-1 flex-row flex-wrap lg:px-32 justify-start">
                 <div className="flex flex-col max-w-screen-lg lg:max-w-md w-full justify-start lg:mt-10">
@@ -55,9 +65,9 @@ export default function PokemonDetails() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-1 flex-col items-start justify-center px-4 py-4 lg:pl-4 lg:pr-2 lg:mt-10">
+                <div className="flex flex-1 flex-col items-start justify-start px-4 py-4 lg:pl-4 lg:pr-2 lg:mt-10">
                     <h1 className="text-3xl mb-4">Description</h1>
-                    <p className="text-lg">{pokemonDetails.data?.flavor_text_entries[0].flavor_text}</p>
+                    <p className="text-lg">{pokemonDetails.data?.flavor_text_entries.filter((entry: any) => entry.language.name === "en")[0].flavor_text}</p>
                     <h1 className="text-3xl my-4">Ability</h1>
                     <p className="text-lg first-letter:uppercase">{pokemonData.data?.abilities[0].ability.name}</p>
                     <h1 className="text-3xl my-4">Gender</h1>
@@ -67,7 +77,7 @@ export default function PokemonDetails() {
                     <h1 className="text-3xl my-4">Egg Groups</h1>
                     {pokemonDetails.data?.egg_groups.map((element: any, index: any) => { return (<p key={index} className="text-lg first-letter:uppercase">{element.name}</p>) })}
                     <h1 className="text-3xl my-4">Evolution</h1>
-                    <div className="flex flex-row flex-wrap lg:w-full">
+                    <div className="flex flex-row flex-wrap w-full">
                         {evolutionChain.map((element: any, index: any) => { return (<PokemonCard key={index} name={element} url=""></PokemonCard>) })}
                     </div>
                 </div>
@@ -75,6 +85,9 @@ export default function PokemonDetails() {
         )
     }
 
+    // Render the PokemonDetails component
+    // If the data is still loading, display the PokemonLoading component
+    // If the data has loaded, display the DetailsCard component
     return (
         <>
             {pokemonData.isLoading ? <PokemonLoading /> : <DetailsCard />}

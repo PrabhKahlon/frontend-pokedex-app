@@ -4,22 +4,27 @@ import { useFetchList } from "../hooks/useFetchList"
 import { PokemonCard } from "./PokemonCard"
 
 export default function PokedexHome() {
+    // Use the custom hook to fetch a list of Pokemon, initially fetching 32 pokemon
     const { data, isLoading, fetchNextPage } = useFetchList(32)
 
+    // Intersection observer to trigger fetching the next page when the last Pokemon card is in view
     const { ref: intersectionRef, entry } = useIntersection<HTMLDivElement>({
         root: null,
         rootMargin: "0px",
         threshold: 1,
     });
 
+    // If the last Pokemon card is in view (i.e., intersecting), fetch the next page
     useEffect(() => {
         if (entry?.isIntersecting) {
             fetchNextPage();
         }
     }, [entry, fetchNextPage])
 
+    // Flatten the data from all fetched pages into a single array
     const cards = data?.pages.flatMap((page) => page.results);
 
+    // Loading placeholder
     function HomeLoading() {
         return (
             <div className="flex flex-1 align-middle items-center justify-center">
@@ -28,12 +33,12 @@ export default function PokedexHome() {
         )
     }
 
+    // Render the PokedexHome component
     return (
         <>
             {isLoading ? <HomeLoading /> :
                 <div className="w-full text-center">
                     <div className="flex justify-center">
-                        {/* <h1 className="text-5xl m-6">All Pokémon</h1> */}
                         <img className="w-72 p-4" src="/images/pk-logo.png" alt="pokemon logo"></img>
                     </div>
                     <div className="flex flex-row flex-wrap justify-center px-4">

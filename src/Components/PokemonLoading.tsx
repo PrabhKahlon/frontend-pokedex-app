@@ -1,6 +1,7 @@
 import React from "react"
 
 export default function PokemonLoading() {
+    // Render a placeholder card while the Pokemon details are loading
     return (
         <div className="flex flex-col">
             <div className="mt-3 mx-2 flex flex-col items-center border rounded-lg border-gray-400 max-w-screen-md lg:max-w-sm lg:h-full">
